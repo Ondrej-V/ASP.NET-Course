@@ -1,0 +1,51 @@
+﻿@model VidlyApp.ViewModels.ShowCustomerViewModel
+@{
+    ViewBag.Title = "ShowCustomers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    if (Model.Customers.Count == 0)
+    {
+        <p>No one hast rented this movie</p>
+    }
+
+    else
+    {
+        
+        <html>
+
+        <body>
+
+        <h2>Customers</h2>
+            
+        
+        <table 
+            class="table table-bordered table-hover"
+            style="width: 50%">
+
+            <tr>
+                <th>Name of the Customer</th>
+            </tr>
+            @{
+
+                foreach (var customer in Model.Customers)
+
+                {
+                    <tr>
+
+                        <td>@LinkExtensions.ActionLink(Html, customer.Name, "CustomerDetail", "Customers", new { id = customer.Id }, null)</td>
+
+                    </tr>
+
+                }
+
+            }
+
+        </table>
+
+        </body>
+        </html>
+
+    }
+}
